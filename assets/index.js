@@ -136,7 +136,9 @@ document.querySelector(".go").addEventListener('click', () => {
             console.log("Zdjęcie nie zostało wybrane");
         }
     }else{
-        params.set("image", imageUrl);
+        // Zapisz zdjęcie do localStorage zamiast przekazywać przez URL (URL ma limit długości)
+        localStorage.setItem("userImage", imageUrl);
+        console.log("Zdjęcie zapisane do localStorage");
     }
 
     var birthday = "";

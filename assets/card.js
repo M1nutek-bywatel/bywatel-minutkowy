@@ -72,7 +72,13 @@ for (var key of params.keys()){
   data[key] = params.get(key);
 }
 
-document.querySelector(".id_own_image").style.backgroundImage = `url(${data['image']})`;
+// Odczytaj zdjęcie z localStorage zamiast z URL (base64 jest zbyt długi dla URL)
+var userImage = localStorage.getItem("userImage");
+if (userImage) {
+  document.querySelector(".id_own_image").style.backgroundImage = `url(${userImage})`;
+} else {
+  console.error("Nie znaleziono zdjęcia w localStorage");
+}
 
 var birthday = data['birthday'];
 var birthdaySplit = birthday.split(".");
